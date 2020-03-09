@@ -11,10 +11,12 @@ def memory_optimizer_test():
     d = tf.add_n([a, b, c], name='d')
 
     sess = tf.Session()
+    writer = tf.summary.FileWriter(logdir="./logs", graph=sess.graph)
     init = tf.global_variables_initializer()
     sess.run(init)
     out = sess.run(d)
     print(out)
+    writer.close()
 
 
 def main():
